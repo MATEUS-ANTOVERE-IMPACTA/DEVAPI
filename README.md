@@ -1,4 +1,4 @@
-🏫 Sistema de Gerenciamento Escolar - API
+🏫 Sistema de Gerenciamento Escolar - API DEVOPS
 Uma API simples para gerenciamento de professores, turmas e alunos, desenvolvida com Flask e seguindo o padrão MVC.
 
 🚀 Tecnologias Usadas
