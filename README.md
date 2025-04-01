@@ -23,6 +23,6 @@ O **Sistema de Gerenciamento Escolar** é uma API desenvolvida em **Flask** que 
 
 👥 Equipe de Desenvolvimento
 
-👤 Mateus Antovere Silva Rosário | RA: 2401764
-👤 Leandro Ferreira Cassemiro Rosa | RA: 2302060
+👤 Mateus Antovere Silva Rosário | RA: 2401764<br>
+👤 Leandro Ferreira Cassemiro Rosa | RA: 2302060<br>
 👤 Gabriel Aparecido de Macedo | RA: 2401541
