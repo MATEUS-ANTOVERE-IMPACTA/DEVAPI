@@ -1,23 +1,28 @@
-🏫 Sistema de Gerenciamento Escolar - API
-Uma API simples para gerenciamento de professores, turmas e alunos, desenvolvida com Flask e seguindo o padrão MVC.
+# 💻 Sistema de Gerenciamento Escolar - API  
 
-🚀 Tecnologias Usadas
-🐍 Python
+## 📖 Descrição  
 
-🔥 Flask
+O **Sistema de Gerenciamento Escolar** é uma API desenvolvida em **Flask** que permite gerenciar **professores, turmas e alunos**. O sistema possibilita a realização de **cadastro, edição, exclusão e consulta** de informações acadêmicas de forma simples e eficiente.  
 
-🗄️ Banco de Dados em Memória (simulado com listas)
+---
 
-🌿 GitFlow para controle de versão
+## 🚀 Funcionalidades  
 
-📂 Estrutura do Projeto
-DEAPI/
-│── models/                # Modelos das entidades (Aluno, Professor, Turma)
-│   ├── aluno.py
-│   ├── professor.py
-│   ├── turma.py
-│── Scripts/               # Diretório para scripts auxiliares
-│── app.py                 # Arquivo principal da API
-│── requirements.txt       # Dependências do projeto
-│── teste.py               # Testes para API
-│── .gitignore             # Arquivos ignorados pelo Git
+✅ **Gerenciamento de Professores** → Cadastro, listagem, atualização e remoção de professores.  
+✅ **Controle de Turmas** → Criação, edição e exclusão de turmas associadas a professores.  
+✅ **Cadastro de Alunos** → Registro de alunos, cálculo de média final e associação a turmas.  
+✅ **Reinicialização de Dados** → Endpoint para limpar todas as informações cadastradas.  
+
+---
+
+## 🛠 Tecnologias Utilizadas  
+
+🔹 **Python** → Linguagem principal do projeto  
+🔹 **Flask** → Framework para criação da API  
+🔹 **Git e GitFlow** → Controle de versão e gerenciamento de branches  
+
+👥 Equipe de Desenvolvimento
+
+👤 Mateus Antovere Silva Rosário | RA: 2401764
+👤 Leandro Ferreira Cassemiro Rosa | RA: 2302060
+👤 Gabriel Aparecido de Macedo | RA: 2401541
