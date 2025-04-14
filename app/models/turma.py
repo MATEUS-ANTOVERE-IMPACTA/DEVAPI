@@ -1,12 +1,15 @@
 class Turma:
-    def __init__(self, nome, professor):
-        self.nome = nome
-        self.professor = professor
-        self.alunos = []
+    def __init__(self, id, descricao, professor_id, ativo):
+        self.id = id
+        self.descricao = descricao
+        self.professor_id = professor_id
+        self.ativo = ativo
 
-    def adicionar_aluno(self, aluno):
-        self.alunos.append(aluno)
-
-    def remover_aluno(self, nome_aluno):
-        self.alunos = [aluno for aluno in self.alunos if aluno.nome != nome_aluno]
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "descricao": self.descricao,
+            "professor_id": self.professor_id,
+            "ativo": self.ativo
+        }
 

@@ -1,14 +1,22 @@
 class Aluno:
-    def __init__(self, nome, nota1, nota2):
+    def __init__(self, id, nome, idade, turma_id, data_nascimento, nota_primeiro_semestre, nota_segundo_semestre):
+        self.id = id
         self.nome = nome
-        self.nota1 = nota1
-        self.nota2 = nota2
-        self.media = self.calcular_media()
+        self.idade = idade
+        self.turma_id = turma_id
+        self.data_nascimento = data_nascimento
+        self.nota_primeiro_semestre = nota_primeiro_semestre
+        self.nota_segundo_semestre = nota_segundo_semestre
+        self.media_final = (nota_primeiro_semestre + nota_segundo_semestre) / 2
 
-    def calcular_media(self):
-        return (self.nota1 + self.nota2) / 2
-
-    def atualizar_notas(self, nota1, nota2):
-        self.nota1 = nota1
-        self.nota2 = nota2
-        self.media = self.calcular_media()
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "idade": self.idade,
+            "turma_id": self.turma_id,
+            "data_nascimento": self.data_nascimento,
+            "nota_primeiro_semestre": self.nota_primeiro_semestre,
+            "nota_segundo_semestre": self.nota_segundo_semestre,
+            "media_final": self.media_final
+        }
