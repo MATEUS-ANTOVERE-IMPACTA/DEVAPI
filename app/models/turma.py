@@ -1,13 +1,12 @@
-turmas = []
+class Turma:
+    def __init__(self, nome, professor):
+        self.nome = nome
+        self.professor = professor
+        self.alunos = []
 
-def criar_turma(nome):
-    nova = {'id': len(turmas) + 1, 'nome': nome}
-    turmas.append(nova)
-    return nova
+    def adicionar_aluno(self, aluno):
+        self.alunos.append(aluno)
 
-def listar_turmas():
-    return turmas
-
-def buscar_turma_por_id(id):
-    return next((t for t in turmas if t['id'] == id), None)
+    def remover_aluno(self, nome_aluno):
+        self.alunos = [aluno for aluno in self.alunos if aluno.nome != nome_aluno]
 

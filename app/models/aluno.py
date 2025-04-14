@@ -1,12 +1,14 @@
-alunos = []
+class Aluno:
+    def __init__(self, nome, nota1, nota2):
+        self.nome = nome
+        self.nota1 = nota1
+        self.nota2 = nota2
+        self.media = self.calcular_media()
 
-def criar_aluno(nome):
-    novo = {'id': len(alunos) + 1, 'nome': nome}
-    alunos.append(novo)
-    return novo
+    def calcular_media(self):
+        return (self.nota1 + self.nota2) / 2
 
-def listar_alunos():
-    return alunos
-
-def buscar_aluno_por_id(id):
-    return next((a for a in alunos if a['id'] == id), None)
+    def atualizar_notas(self, nota1, nota2):
+        self.nota1 = nota1
+        self.nota2 = nota2
+        self.media = self.calcular_media()
