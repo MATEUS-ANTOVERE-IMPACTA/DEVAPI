@@ -2,56 +2,53 @@ import requests
 
 BASE_URL = "http://127.0.0.1:5000"
 
-def testar_get_alunos():
-    response = requests.get(f"{BASE_URL}/alunos")
-    print("GET /alunos:", response.status_code, response.json())
-
-def testar_post_aluno():
-    novo_aluno = {
-        "id": 1,
-        "nome": "João da Silva",
-        "idade": 20
-    }
-    response = requests.post(f"{BASE_URL}/alunos", json=novo_aluno)
-    print("POST /alunos:", response.status_code, response.json())
-
-def testar_get_professores():
-    response = requests.get(f"{BASE_URL}/professores")
-    print("GET /professores:", response.status_code, response.json())
+def testar_reset():
+    r = requests.post(f"{BASE_URL}/reseta")
+    try:
+        print("RESET:", r.status_code, r.json())
+    except requests.exceptions.JSONDecodeError:
+        print("RESET:", r.status_code, "Resposta não é JSON:", r.text)
 
 def testar_post_professor():
-    novo_professor = {
-        "id": 1,
-        "nome": "Maria Oliveira",
-        "disciplina": "Matemática"
+    professor = {
+        "nome": "Maria Oliveira"
     }
-    response = requests.post(f"{BASE_URL}/professores", json=novo_professor)
-    print("POST /professores:", response.status_code, response.json())
+    r = requests.post(f"{BASE_URL}/professores", json=professor)
+    print("POST /professores:", r.status_code, r.json())
+    return r.json().get("id")
 
-def testar_get_turmas():
-    response = requests.get(f"{BASE_URL}/turmas")
-    print("GET /turmas:", response.status_code, response.json())
-
-def testar_post_turma():
-    nova_turma = {
-        "id": 1,
-        "nome": "Turma A",
-        "alunos": [1],
-        "professor_id": 1
+def testar_post_turma(professor_id):
+    turma = {
+        "descricao": "Turma A",
+        "professor_id": professor_id,
+        "ativo": True
     }
-    response = requests.post(f"{BASE_URL}/turmas", json=nova_turma)
-    print("POST /turmas:", response.status_code, response.json())
+    r = requests.post(f"{BASE_URL}/turmas", json=turma)
+    print("POST /turmas:", r.status_code, r.json())
+    return r.json().get("id")
 
-# Execução dos testes
+def testar_post_aluno(turma_id):
+    aluno = {
+        "nome": "João da Silva",
+        "idade": 20,
+        "turma_id": turma_id,
+        "data_nascimento": "2003-05-15",
+        "nota_primeiro_semestre": 7.5,
+        "nota_segundo_semestre": 8.0
+    }
+    r = requests.post(f"{BASE_URL}/alunos", json=aluno)
+    print("POST /alunos:", r.status_code, r.json())
+
+def testar_gets():
+    print("\nGET /professores:", requests.get(f"{BASE_URL}/professores").json())
+    print("GET /turmas:", requests.get(f"{BASE_URL}/turmas").json())
+    print("GET /alunos:", requests.get(f"{BASE_URL}/alunos").json())
+
 if __name__ == "__main__":
-    testar_get_alunos()
-    testar_post_aluno()
-    testar_get_alunos()
+    testar_reset()
 
-    testar_get_professores()
-    testar_post_professor()
-    testar_get_professores()
+    professor_id = testar_post_professor()
+    turma_id = testar_post_turma(professor_id)
+    testar_post_aluno(turma_id)
 
-    testar_get_turmas()
-    testar_post_turma()
-    testar_get_turmas()
+    testar_gets()

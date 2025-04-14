@@ -2,6 +2,7 @@ from flask import Flask
 from controllers.aluno_controller import aluno_bp
 from controllers.professor_controller import professor_bp
 from controllers.turma_controller import turma_bp
+from controllers.reset_controller import reset_bp  # ⬅️ ADICIONE ESTA LINHA
 
 app = Flask(__name__)
 
@@ -9,6 +10,7 @@ app = Flask(__name__)
 app.register_blueprint(aluno_bp, url_prefix="/alunos")
 app.register_blueprint(professor_bp, url_prefix="/professores")
 app.register_blueprint(turma_bp, url_prefix="/turmas")
+app.register_blueprint(reset_bp)  # ⬅️ ADICIONE ESTA LINHA
 
 if __name__ == "__main__":
     app.run(debug=True)
