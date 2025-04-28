@@ -1,7 +1,13 @@
-# Use docker-compose quando sua aplicação tem mais de um serviço.
+version: '3.8'
 
-# Sua API Flask precisa de um banco de dados externo (PostgreSQL, MySQL, Redis, etc.).
-# Você quer rodar sua aplicação localmente com um comando simples (docker-compose up).
-# Você tem múltiplos containers que precisam se comunicar.
-
-# Se sua aplicação Flask usa apenas SQLite, o docker-compose não é essencial, porque o SQLite é só um arquivo .db.
+services:
+  devapi:
+    build: .
+    container_name: devapi
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+    command: python app/app.py
