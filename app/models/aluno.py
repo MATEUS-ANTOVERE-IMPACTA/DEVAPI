@@ -1,4 +1,5 @@
 from config import db
+from models.turma import Turma
 
 class Aluno(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,3 +33,31 @@ class Aluno(db.Model):
             "nota_segundo_semestre": self.nota_segundo_semestre,
             "media_final": self.media_final
         }
+
+    @staticmethod
+    def criar(data):
+        campos = ['nome', 'idade', 'turma_id', 'data_nascimento', 'nota_primeiro_semestre', 'nota_segundo_semestre']
+        for campo in campos:
+            if campo not in data:
+                return {"erro": f"Campo obrigatório ausente: {campo}"}, 400
+
+        if not Turma.query.get(data['turma_id']):
+            return {"erro": "Turma não encontrada"}, 400
+
+        aluno = Aluno(**data)
+        db.session.add(aluno)
+        db.session.commit()
+        return aluno.to_dict(), 201
+
+    @staticmethod
+    def listar():
+        return [a.to_dict() for a in Aluno.query.all()]
+
+    @staticmethod
+    def deletar(id):
+        aluno = Aluno.query.get(id)
+        if not aluno:
+            return {"erro": "Aluno não encontrado"}, 404
+        db.session.delete(aluno)
+        db.session.commit()
+        return {"mensagem": "Aluno removido com sucesso"}, 200

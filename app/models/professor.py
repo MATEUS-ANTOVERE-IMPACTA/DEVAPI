@@ -8,7 +8,26 @@ class Professor(db.Model):
         self.nome = nome
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "nome": self.nome
-        }
+        return {"id": self.id, "nome": self.nome}
+
+    @staticmethod
+    def criar(data):
+        if "nome" not in data:
+            return {"erro": "Campo nome é obrigatório"}, 400
+        prof = Professor(nome=data["nome"])
+        db.session.add(prof)
+        db.session.commit()
+        return prof.to_dict(), 201
+
+    @staticmethod
+    def listar():
+        return [p.to_dict() for p in Professor.query.all()]
+
+    @staticmethod
+    def deletar(id):
+        prof = Professor.query.get(id)
+        if not prof:
+            return {"erro": "Professor não encontrado"}, 404
+        db.session.delete(prof)
+        db.session.commit()
+        return {"mensagem": "Professor removido"}, 200

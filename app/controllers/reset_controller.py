@@ -1,11 +1,16 @@
+# controllers/reset_controller.py
 from flask import Blueprint, jsonify
-from storage import alunos, professores, turmas
+from config import db
+from models.aluno import Aluno
+from models.professor import Professor
+from models.turma import Turma
 
 reset_bp = Blueprint("reset_bp", __name__)
 
-@reset_bp.route('/reseta', methods=['POST', 'DELETE'])
-def reset_data():
-    alunos.clear()
-    professores.clear()
-    turmas.clear()
-    return jsonify({'mensagem': 'Dados resetados com sucesso'}), 200
+@reset_bp.route("/reseta", methods=["POST"])
+def resetar_dados():
+    db.session.query(Aluno).delete()
+    db.session.query(Turma).delete()
+    db.session.query(Professor).delete()
+    db.session.commit()
+    return jsonify({"mensagem": "Dados resetados com sucesso"}), 200
