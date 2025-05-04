@@ -6,18 +6,16 @@ from models.turma import Turma
 
 reset_bp = Blueprint("reset_bp", __name__)
 
-@reset_bp.route("/", methods=["POST"])
+@reset_bp.route("/reseta", methods=["POST"])
 def resetar_dados():
     """
-    Reseta todos os dados do banco (Alunos, Turmas e Professores)
+    Reseta todos os dados do banco de dados
     ---
     tags:
       - Utilitários
     responses:
       200:
-        description: Todos os dados foram apagados com sucesso
-        examples:
-          application/json: {"mensagem": "Dados resetados com sucesso"}
+        description: Dados resetados com sucesso
     """
     db.session.query(Aluno).delete()
     db.session.query(Turma).delete()
