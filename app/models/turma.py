@@ -43,3 +43,18 @@ class Turma(db.Model):
         db.session.delete(turma)
         db.session.commit()
         return {"mensagem": "Turma removida"}, 200
+
+    @staticmethod
+    def atualizar(id, data):
+        turma = Turma.query.get(id)
+        if not turma:
+            return {"erro": "Turma não encontrada"}, 404
+        if 'descricao' not in data or 'professor_id' not in data:
+            return {"erro": "Campos obrigatórios ausentes"}, 400
+        if not Professor.query.get(data['professor_id']):
+            return {"erro": "Professor não encontrado"}, 400
+        turma.descricao = data['descricao']
+        turma.professor_id = data['professor_id']
+        turma.ativo = data.get('ativo', turma.ativo)
+        db.session.commit()
+        return turma.to_dict(), 200

@@ -38,10 +38,42 @@ def criar_professor():
       201:
         description: Professor criado com sucesso
       400:
-        description: Nome obrigatório
+        description: Erro de validação
     """
     data = request.get_json()
     resposta, status = Professor.criar(data)
+    return jsonify(resposta), status
+
+@professor_bp.route("/<int:id>", methods=["PUT"])
+def atualizar_professor(id):
+    """
+    Atualiza um professor pelo ID
+    ---
+    tags:
+      - Professores
+    parameters:
+      - in: path
+        name: id
+        required: true
+        type: integer
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          required:
+            - nome
+          properties:
+            nome:
+              type: string
+    responses:
+      200:
+        description: Professor atualizado
+      404:
+        description: Professor não encontrado
+    """
+    data = request.get_json()
+    resposta, status = Professor.atualizar(id, data)
     return jsonify(resposta), status
 
 @professor_bp.route("/<int:id>", methods=["DELETE"])
@@ -58,7 +90,7 @@ def deletar_professor(id):
         required: true
     responses:
       200:
-        description: Professor removido com sucesso
+        description: Professor removido
       404:
         description: Professor não encontrado
     """

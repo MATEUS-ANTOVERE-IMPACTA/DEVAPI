@@ -31,3 +31,14 @@ class Professor(db.Model):
         db.session.delete(prof)
         db.session.commit()
         return {"mensagem": "Professor removido"}, 200
+
+    @staticmethod
+    def atualizar(id, data):
+        prof = Professor.query.get(id)
+        if not prof:
+            return {"erro": "Professor não encontrado"}, 404
+        if "nome" not in data:
+            return {"erro": "Campo nome é obrigatório"}, 400
+        prof.nome = data["nome"]
+        db.session.commit()
+        return prof.to_dict(), 200
