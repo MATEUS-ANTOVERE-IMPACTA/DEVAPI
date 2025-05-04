@@ -43,7 +43,7 @@ Bem-vindo ao **DevAPI**, uma API RESTful desenvolvida em **Python com Flask**, i
 
 1. Clone o repositório:
    ```bash
-   git clone <url-do-repositorio>
+   git clone <https://github.com/MATEUS-ANTOVERE-IMPACTA/DEVAPI>
    cd DEVAPI
    ```
 
@@ -89,12 +89,6 @@ Você pode testar a API executando o arquivo `teste.py`:
 ```bash
 python teste.py
 ```
-
----
-
-## 📅 Atualizado em
-
-04/05/2025
 
 ---
 
