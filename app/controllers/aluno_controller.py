@@ -39,16 +39,22 @@ def criar_aluno():
           properties:
             nome:
               type: string
+              example: João da Silva
             idade:
               type: integer
+              example: 20
             turma_id:
               type: integer
+              example: 1
             data_nascimento:
               type: string
+              example: "2000-05-15"
             nota_primeiro_semestre:
               type: number
+              example: 7.5
             nota_segundo_semestre:
               type: number
+              example: 8.0
     responses:
       201:
         description: Aluno criado com sucesso
@@ -57,6 +63,61 @@ def criar_aluno():
     """
     data = request.get_json()
     resposta, status = Aluno.criar(data)
+    return jsonify(resposta), status
+
+@aluno_bp.route("/<int:id>", methods=["PUT"])
+def atualizar_aluno(id):
+    """
+    Atualiza um aluno existente
+    ---
+    tags:
+      - Alunos
+    parameters:
+      - in: path
+        name: id
+        required: true
+        type: integer
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          required:
+            - nome
+            - idade
+            - turma_id
+            - data_nascimento
+            - nota_primeiro_semestre
+            - nota_segundo_semestre
+          properties:
+            nome:
+              type: string
+              example: João da Silva Atualizado
+            idade:
+              type: integer
+              example: 21
+            turma_id:
+              type: integer
+              example: 1
+            data_nascimento:
+              type: string
+              example: "2000-05-15"
+            nota_primeiro_semestre:
+              type: number
+              example: 8.0
+            nota_segundo_semestre:
+              type: number
+              example: 9.0
+    responses:
+      200:
+        description: Aluno atualizado com sucesso
+      400:
+        description: Erro de validação
+      404:
+        description: Aluno não encontrado
+    """
+    data = request.get_json()
+    resposta, status = Aluno.atualizar(id, data)
     return jsonify(resposta), status
 
 @aluno_bp.route("/<int:id>", methods=["DELETE"])

@@ -2,6 +2,7 @@ from config import db
 from models.turma import Turma
 
 class Aluno(db.Model):
+    """Modelo da entidade Aluno"""
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
     idade = db.Column(db.Integer, nullable=False)
@@ -61,3 +62,27 @@ class Aluno(db.Model):
         db.session.delete(aluno)
         db.session.commit()
         return {"mensagem": "Aluno removido com sucesso"}, 200
+
+    @staticmethod
+    def atualizar(id, data):
+        aluno = Aluno.query.get(id)
+        if not aluno:
+            return {"erro": "Aluno não encontrado"}, 404
+
+        campos = ['nome', 'idade', 'turma_id', 'data_nascimento', 'nota_primeiro_semestre', 'nota_segundo_semestre']
+        for campo in campos:
+            if campo not in data:
+                return {"erro": f"Campo obrigatório ausente: {campo}"}, 400
+
+        if not Turma.query.get(data['turma_id']):
+            return {"erro": "Turma não encontrada"}, 400
+
+        aluno.nome = data['nome']
+        aluno.idade = data['idade']
+        aluno.turma_id = data['turma_id']
+        aluno.data_nascimento = data['data_nascimento']
+        aluno.nota_primeiro_semestre = data['nota_primeiro_semestre']
+        aluno.nota_segundo_semestre = data['nota_segundo_semestre']
+
+        db.session.commit()
+        return aluno.to_dict(), 200
