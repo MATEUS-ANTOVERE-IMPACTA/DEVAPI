@@ -109,6 +109,46 @@ def testar_get_swagger():
     r = requests.get(f"{BASE_URL}/apidocs/")
     print("15. GET /apidocs/:", r.status_code, "OK" if r.status_code == 200 else "Erro")
 
+# NOVAS FUNÇÕES DE TESTE: ReservasAPI e AtividadesAPI
+def testar_post_reserva(turma_id):
+    reserva = {
+        "sala": "Sala 101",
+        "horario": "10:00 - 12:00",
+        "turma_id": turma_id
+    }
+    try:
+        r = requests.post("http://127.0.0.1:5001/reservas", json=reserva)
+        print("16. POST /reservas:", r.status_code, r.json())
+    except requests.exceptions.RequestException as e:
+        print("16. POST /reservas falhou:", str(e))
+
+def testar_get_reservas():
+    try:
+        r = requests.get("http://127.0.0.1:5001/reservas")
+        print("17. GET /reservas:", r.status_code, r.json())
+    except requests.exceptions.RequestException as e:
+        print("17. GET /reservas falhou:", str(e))
+
+def testar_post_atividade(professor_id):
+    atividade = {
+        "titulo": "Seminário de Segurança",
+        "descricao": "Apresentação sobre firewalls",
+        "professor_id": professor_id
+    }
+    try:
+        r = requests.post("http://127.0.0.1:5002/atividades", json=atividade)
+        print("18. POST /atividades:", r.status_code, r.json())
+    except requests.exceptions.RequestException as e:
+        print("18. POST /atividades falhou:", str(e))
+
+def testar_get_atividades():
+    try:
+        r = requests.get("http://127.0.0.1:5002/atividades")
+        print("19. GET /atividades:", r.status_code, r.json())
+    except requests.exceptions.RequestException as e:
+        print("19. GET /atividades falhou:", str(e))
+
+
 # Execução dos testes
 if __name__ == "__main__":
     testar_reset()  # Teste 1
@@ -128,9 +168,13 @@ if __name__ == "__main__":
                 testar_delete_aluno(aluno_id)        # Teste 11
 
             testar_put_turma(turma_id, professor_id) # Teste 13
+            testar_post_reserva(turma_id)            # Teste 16
+            testar_get_reservas()                    # Teste 17
             testar_delete_turma(turma_id)            # Teste 7
 
         testar_put_professor(professor_id)           # Teste 12
+        testar_post_atividade(professor_id)          # Teste 18
+        testar_get_atividades()                      # Teste 19
         testar_delete_professor(professor_id)        # Teste 4
 
     testar_get_home()     # Teste 14
