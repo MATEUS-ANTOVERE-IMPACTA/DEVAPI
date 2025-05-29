@@ -1,72 +1,71 @@
-📚 DevAPI - Sistema de Gerenciamento Acadêmico
+# 📚 DevAPI - Sistema de Gerenciamento Acadêmico
 
-Bem-vindo ao DevAPI, uma API RESTful desenvolvida em Python com Flask, ideal para o gerenciamento de alunos, professores e turmas. O projeto segue o padrão MVC, utiliza banco de dados SQLite e oferece documentação via Swagger.
+Bem-vindo ao **DevAPI**, uma API RESTful desenvolvida em **Python com Flask**, ideal para gerenciamento de alunos, professores e turmas. O projeto segue o padrão arquitetural **MVC**, utiliza banco de dados **SQLite**, e oferece documentação interativa via **Swagger UI**.
 
-🚀 Funcionalidades
+---
 
-📌 Alunos
+## 🚀 Funcionalidades
 
-Cadastro, listagem e remoção de alunos.
+### 📌 Alunos
 
-Cálculo automático da média final (1º e 2º semestre).
+- Cadastro, listagem e remoção de alunos.
+- Cálculo automático da média final (1º e 2º semestre).
+- Validação de existência da turma.
 
-Validação de turma existente.
+### 👨‍🏫 Professores
 
-👨‍🏫 Professores
+- Cadastro, listagem e remoção de professores.
 
-Cadastro, listagem e remoção de professores.
+### 🏫 Turmas
 
-🏫 Turmas
+- Cadastro de turmas vinculadas aos professores.
+- Listagem e remoção de turmas.
+- Controle de status "**ativo**".
 
-Cadastro de turmas vinculadas a professores.
+### 🧹 Reset
 
-Listagem e remoção de turmas.
+- Rota específica para resetar todas as entidades do banco de dados.
 
-Controle de status "ativo".
+### 🧾 Documentação com Swagger UI
 
-🧹 Reset
+- Interface gráfica para testes e documentação das rotas.
+- Disponível em: [http://localhost:5000/apidocs](http://localhost:5000/apidocs)
 
-Rota para resetar todas as entidades do banco.
+---
 
-🧾 Swagger
+## 🛠️ Tecnologias Utilizadas
 
-Interface para documentação e testes das rotas.
+- **Python 3.11**
+- **Flask 3.0.2**
+- **Flask-SQLAlchemy**
+- **Flasgger (Swagger UI)**
+- **SQLite** (banco de dados leve e embutido)
+- **Docker & Docker Compose**
 
-Disponível em: /apidocs
+---
 
-🛠️ Tecnologias Utilizadas
-
-Python 3.11
-
-Flask 3.0.2
-
-Flask-SQLAlchemy
-
-Flasgger (Swagger UI)
-
-SQLite (banco de dados leve e embutido)
-
-Docker & Docker Compose
-
-🐳 Rodando com Docker
+## 🐳 Como Rodar com Docker
 
 Clone o repositório:
 
+```bash
 git clone https://github.com/MATEUS-ANTOVERE-IMPACTA/DEVAPI
 cd DEVAPI
+Execute via Docker Compose:
 
-Rode o Docker:
-
+bash
+Copiar
+Editar
 docker-compose up --build
-
-Acesse:
-
+🌐 Acesse a aplicação
 Swagger UI: http://localhost:5000/apidocs
 
 API: http://localhost:5000
 
-📂 Estrutura de Pastas
-
+📂 Estrutura do Projeto
+arduino
+Copiar
+Editar
 DEVAPI/
 ├── app/
 │   ├── controllers/
@@ -84,13 +83,16 @@ DEVAPI/
 ├── Dockerfile
 ├── docker-compose.yml
 └── teste.py
-
 🧪 Testes
+Você pode testar a API executando diretamente o arquivo teste.py:
 
-Você pode testar a API executando o arquivo teste.py:
-
+bash
+Copiar
+Editar
 python teste.py
+👨‍💼 Equipe de Desenvolvimento
+Mateus Antovere Silva Rosário | RA: 2401764
 
-👨‍💼 Desenvolvido por
+Leandro Ferreira Cassemiro Rosa | RA: 2302060
 
-👤 Mateus Antovere Silva Rosário | RA: 2401764👤 Leandro Ferreira Cassemiro Rosa | RA: 2302060👤 Gabriel Quaglio Monteiro Praça | RA: 2400738
+Gabriel Quaglio Monteiro Praça | RA: 2400738
