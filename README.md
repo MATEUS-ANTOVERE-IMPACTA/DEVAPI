@@ -53,9 +53,6 @@ git clone https://github.com/MATEUS-ANTOVERE-IMPACTA/DEVAPI
 cd DEVAPI
 Execute via Docker Compose:
 
-bash
-Copiar
-Editar
 docker-compose up --build
 🌐 Acesse a aplicação
 Swagger UI: http://localhost:5000/apidocs
@@ -63,9 +60,7 @@ Swagger UI: http://localhost:5000/apidocs
 API: http://localhost:5000
 
 📂 Estrutura do Projeto
-arduino
-Copiar
-Editar
+
 DEVAPI/
 ├── app/
 │   ├── controllers/
