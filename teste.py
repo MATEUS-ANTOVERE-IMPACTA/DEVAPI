@@ -1,3 +1,6 @@
+
+# NOVO teste.py COM INTEGRAÇÃO ENTRE MICROSSERVIÇOS
+
 import requests
 
 BASE_URL = "http://127.0.0.1:5000"
@@ -109,7 +112,6 @@ def testar_get_swagger():
     r = requests.get(f"{BASE_URL}/apidocs/")
     print("15. GET /apidocs/:", r.status_code, "OK" if r.status_code == 200 else "Erro")
 
-# NOVAS FUNÇÕES DE TESTE: ReservasAPI e AtividadesAPI
 def testar_post_reserva(turma_id):
     reserva = {
         "sala": "Sala 101",
@@ -148,34 +150,26 @@ def testar_get_atividades():
     except requests.exceptions.RequestException as e:
         print("19. GET /atividades falhou:", str(e))
 
-
-# Execução dos testes
 if __name__ == "__main__":
-    testar_reset()  # Teste 1
-
-    professor_id = testar_post_professor()  # Teste 2
+    testar_reset()
+    professor_id = testar_post_professor()
     if professor_id:
-        testar_get_professores()            # Teste 3
-
-        turma_id = testar_post_turma(professor_id)  # Teste 5
+        testar_get_professores()
+        turma_id = testar_post_turma(professor_id)
         if turma_id:
-            testar_get_turmas()                      # Teste 6
-
-            aluno_id = testar_post_aluno(turma_id)   # Teste 8
+            testar_get_turmas()
+            aluno_id = testar_post_aluno(turma_id)
             if aluno_id:
-                testar_get_alunos()                  # Teste 9
-                testar_put_aluno(aluno_id, turma_id) # Teste 10
-                testar_delete_aluno(aluno_id)        # Teste 11
-
-            testar_put_turma(turma_id, professor_id) # Teste 13
-            testar_post_reserva(turma_id)            # Teste 16
-            testar_get_reservas()                    # Teste 17
-            testar_delete_turma(turma_id)            # Teste 7
-
-        testar_put_professor(professor_id)           # Teste 12
-        testar_post_atividade(professor_id)          # Teste 18
-        testar_get_atividades()                      # Teste 19
-        testar_delete_professor(professor_id)        # Teste 4
-
-    testar_get_home()     # Teste 14
-    testar_get_swagger()  # Teste 15
+                testar_get_alunos()
+                testar_put_aluno(aluno_id, turma_id)
+                testar_delete_aluno(aluno_id)
+            testar_put_turma(turma_id, professor_id)
+            testar_post_reserva(turma_id)
+            testar_get_reservas()
+            testar_delete_turma(turma_id)
+        testar_put_professor(professor_id)
+        testar_post_atividade(professor_id)
+        testar_get_atividades()
+        testar_delete_professor(professor_id)
+    testar_get_home()
+    testar_get_swagger()
