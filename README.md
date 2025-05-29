@@ -86,10 +86,8 @@ DEVAPI/
 🧪 Testes
 Você pode testar a API executando diretamente o arquivo teste.py:
 
-bash
-Copiar
-Editar
 python teste.py
+
 👨‍💼 Equipe de Desenvolvimento
 Mateus Antovere Silva Rosário | RA: 2401764
 
