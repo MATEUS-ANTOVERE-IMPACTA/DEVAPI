@@ -1,4 +1,3 @@
-
 # NOVO teste.py COM INTEGRAÇÃO ENTRE MICROSSERVIÇOS
 
 import requests
@@ -114,19 +113,21 @@ def testar_get_swagger():
 
 def testar_post_reserva(turma_id):
     reserva = {
+        "aluno_nome": "Carlos Souza",
         "sala": "Sala 101",
         "horario": "10:00 - 12:00",
-        "turma_id": turma_id
+        "turma_id": turma_id,
+        "data_reserva": "2025-06-01"
     }
     try:
-        r = requests.post("http://127.0.0.1:5001/reservas", json=reserva)
+        r = requests.post("http://127.0.0.1:5001/reservas/", json=reserva)
         print("16. POST /reservas:", r.status_code, r.json())
     except requests.exceptions.RequestException as e:
         print("16. POST /reservas falhou:", str(e))
 
 def testar_get_reservas():
     try:
-        r = requests.get("http://127.0.0.1:5001/reservas")
+        r = requests.get("http://127.0.0.1:5001/reservas/")
         print("17. GET /reservas:", r.status_code, r.json())
     except requests.exceptions.RequestException as e:
         print("17. GET /reservas falhou:", str(e))

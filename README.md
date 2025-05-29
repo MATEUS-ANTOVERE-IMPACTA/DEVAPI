@@ -1,66 +1,72 @@
-# 📚 DevAPI - Sistema de Gerenciamento Acadêmico
+📚 DevAPI - Sistema de Gerenciamento Acadêmico
 
-Bem-vindo ao **DevAPI**, uma API RESTful desenvolvida em **Python com Flask**, ideal para o gerenciamento de **alunos, professores e turmas**. O projeto segue o padrão MVC, utiliza banco de dados SQLite e oferece documentação via **Swagger**.
+Bem-vindo ao DevAPI, uma API RESTful desenvolvida em Python com Flask, ideal para o gerenciamento de alunos, professores e turmas. O projeto segue o padrão MVC, utiliza banco de dados SQLite e oferece documentação via Swagger.
 
----
+🚀 Funcionalidades
 
-## 🚀 Funcionalidades
+📌 Alunos
 
-- 📌 **Alunos**
-  - Cadastro, listagem e remoção de alunos.
-  - Cálculo automático da média final (1º e 2º semestre).
-  - Validação de turma existente.
+Cadastro, listagem e remoção de alunos.
 
-- 👨‍🏫 **Professores**
-  - Cadastro, listagem e remoção de professores.
+Cálculo automático da média final (1º e 2º semestre).
 
-- 🏫 **Turmas**
-  - Cadastro de turmas vinculadas a professores.
-  - Listagem e remoção de turmas.
-  - Controle de status "ativo".
+Validação de turma existente.
 
-- 🧹 **Reset**
-  - Rota para resetar todas as entidades do banco.
+👨‍🏫 Professores
 
-- 🧾 **Swagger**
-  - Interface para documentação e testes das rotas.
-  - Disponível em: [`/apidocs`](http://localhost:5000/apidocs)
+Cadastro, listagem e remoção de professores.
 
----
+🏫 Turmas
 
-## 🛠️ Tecnologias Utilizadas
+Cadastro de turmas vinculadas a professores.
 
-- Python 3.11
-- Flask 3.0.2
-- Flask-SQLAlchemy
-- Flasgger (Swagger UI)
-- SQLite (banco de dados leve e embutido)
-- Docker & Docker Compose
+Listagem e remoção de turmas.
 
----
+Controle de status "ativo".
 
-## 🐳 Rodando com Docker
+🧹 Reset
 
-1. Clone o repositório:
-   ```bash
-   git clone <https://github.com/MATEUS-ANTOVERE-IMPACTA/DEVAPI>
-   cd DEVAPI
-   ```
+Rota para resetar todas as entidades do banco.
 
-2. Rode o Docker:
-   ```bash
-   docker-compose up --build
-   ```
+🧾 Swagger
 
-3. Acesse:
-   - Swagger UI: [http://localhost:5000/apidocs](http://localhost:5000/apidocs)
-   - API: [http://localhost:5000](http://localhost:5000)
+Interface para documentação e testes das rotas.
 
----
+Disponível em: /apidocs
 
-## 📂 Estrutura de Pastas
+🛠️ Tecnologias Utilizadas
 
-```
+Python 3.11
+
+Flask 3.0.2
+
+Flask-SQLAlchemy
+
+Flasgger (Swagger UI)
+
+SQLite (banco de dados leve e embutido)
+
+Docker & Docker Compose
+
+🐳 Rodando com Docker
+
+Clone o repositório:
+
+git clone https://github.com/MATEUS-ANTOVERE-IMPACTA/DEVAPI
+cd DEVAPI
+
+Rode o Docker:
+
+docker-compose up --build
+
+Acesse:
+
+Swagger UI: http://localhost:5000/apidocs
+
+API: http://localhost:5000
+
+📂 Estrutura de Pastas
+
 DEVAPI/
 ├── app/
 │   ├── controllers/
@@ -78,22 +84,13 @@ DEVAPI/
 ├── Dockerfile
 ├── docker-compose.yml
 └── teste.py
-```
 
----
+🧪 Testes
 
-## 🧪 Testes
+Você pode testar a API executando o arquivo teste.py:
 
-Você pode testar a API executando o arquivo `teste.py`:
-
-```bash
 python teste.py
-```
 
----
+👨‍💼 Desenvolvido por
 
-## 👨‍💻 Desenvolvido por
-
-👤 Mateus Antovere Silva Rosário | RA: 2401764<br>
-👤 Leandro Ferreira Cassemiro Rosa | RA: 2302060<br>
-👤 Gabriel Quaglio Monteiro Praça | RA: 2400738
+👤 Mateus Antovere Silva Rosário | RA: 2401764👤 Leandro Ferreira Cassemiro Rosa | RA: 2302060👤 Gabriel Quaglio Monteiro Praça | RA: 2400738
